@@ -9,7 +9,7 @@ c = [0, 20, 70, 150]
 r = 8
 r_s = 32
 r_t = 16
-sequence_length = 100000
+sequence_length = 10000
 
 # randomly sample input
 random.seed(2)
