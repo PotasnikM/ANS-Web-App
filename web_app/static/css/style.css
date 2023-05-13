@@ -50,6 +50,27 @@ h1 {
 .toggle {
   display: flex;
   align-items: center;
+  margin-right: 10px;
+}
+
+.reset-button{
+ background-color: #34404d;
+  font-family: 'Poppins', sans-serif;
+ color: #fff;
+ font-size: 16px;
+ text-decoration: none;
+ padding: 10px 16px;
+ border: 0px solid #000;
+  margin-right: 10px;
+ border-radius: 10px;
+ display: inline-block;
+
+}
+.reset-button:hover{
+ background-color: #313d49;
+}
+.reset-button:active{
+ transform: scale(0.95);
 }
 
 /* The switch - the box around the slider */
