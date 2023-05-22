@@ -7,10 +7,10 @@
   <body>
     <h1>Asymmetric Numeral System (ANS)</h1>
     <div class="wrapper">
-             <input type="radio" name="select" id="option-1" checked>
-             <input type="radio" name="select" id="option-2">
-            <input type="radio" name="select" id="option-3">
-            <input type="radio" name="select" id="option-4">
+            <input type="radio" onclick="ChangeAnsType(this)" name="select" value="uans" id="option-1" checked="checked">
+            <input type="radio" onclick="ChangeAnsType(this)" name="select" value="ransws" id="option-2">
+            <input type="radio" onclick="ChangeAnsType(this)" name="select" value="ranswos" id="option-3">
+            <input type="radio" onclick="ChangeAnsType(this)" name="select" value="tans" id="option-4">
                <label for="option-1" class="option option-1">
                  <div class="dot"></div>
                   <span>uANS</span>
@@ -33,14 +33,14 @@
         <div class="card-header">
           <h2>Input</h2>
           <div class="toggle">
-             <span>Encoding</span>
+             <span id="encode" name="change">Encoding</span>
             <label class="switch">
-              <input type="checkbox">
+              <input type="checkbox" onclick="ChangeDecode()">
               <span class="slider round"></span>
             </label>
-            <span>Decoding</span>
+            <span id="decode" >Decoding</span>
           </div>
-          <button class="reset-button">Start</button>
+          <button class="reset-button" onclick="start()">Start</button>
         </div>
         <div class="card-body">
           <textarea id="input" rows="10" cols="45" placeholder="Enter a number"></textarea>
@@ -49,7 +49,7 @@
       <div class="card">
         <div class="card-header">
           <h2>Output</h2>
-          <button class="reset-button">Reset</button>
+          <button class="reset-button" onclick="reset()">Reset</button>
         </div>
         <div class="card-body">
           <textarea id="output" rows="10" cols="45" placeholder="Output" readonly></textarea>
@@ -70,6 +70,60 @@
           const regex = /[^0-9]/g; // match any non-numeric characters
           textarea.value = textarea.value.replace(regex, ''); // remove non-numeric characters
         });
+
+        function start() {
+            const input = document.getElementById('input').value;
+            const EnOrDe = document.querySelector("[name='change']").getAttribute('id');
+            const AnsType = document.querySelector("[checked='checked']").getAttribute('value');
+            const data = {
+                input: input
+              };
+            fetch(`/${AnsType}/${EnOrDe}`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+              })
+              .then(response => response.text())
+              .then(data => {
+                const outputTextarea = document.getElementById('output');
+                outputTextarea.value = JSON.parse(data).output;
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+            }
+
+        function isDecode(){
+            document.getElementById('checked ans')
+        }
+
+        function ChangeDecode(){
+            const temp = document.querySelector("[name='change']");
+            if (temp && temp.id === 'encode') {
+              temp.removeAttribute("name");
+              document.getElementById("decode").setAttribute("name", "change");
+            }
+            else{
+              temp.removeAttribute("name");
+              document.getElementById("encode").setAttribute("name", "change");
+            }
+        }
+
+        function ChangeAnsType(element){
+            const temp = document.querySelector("[checked='checked']");
+            temp.removeAttribute('checked');
+            element.setAttribute("checked",'checked');
+        }
+
+        function reset(){
+            document.getElementById('input').value = "";
+            document.getElementById('output').value = "";
+            document.getElementById("encode").setAttribute("name", "change");
+            document.getElementById("decode").removeAttribute("name");
+            ChangeAnsType(document.getElementById('option-1'))
+        }
     </script>
   </body>
 </html>

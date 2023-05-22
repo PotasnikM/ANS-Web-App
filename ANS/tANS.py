@@ -1,4 +1,5 @@
-def encode(data, symbol_occurrences):
+def tans_encode(data):
+    symbol_occurrences = {'0': 1, '1': 10, '2': 1, '3': 1, '4': 2, '5': 1, '6': 1, '7': 1, '8': 1, '9': 1}
     # Create a dictionary to hold the codewords for each symbol
     codewords = {}
     # Create a list of tuples representing each symbol with its occurrence count
@@ -19,7 +20,8 @@ def encode(data, symbol_occurrences):
     return encoded_data
 
 
-def decode(encoded_data, symbol_occurrences):
+def tans_decode(encoded_data):
+    symbol_occurrences = {'0': 1, '1': 10, '2': 1, '3': 1, '4': 2, '5': 1, '6': 1, '7': 1, '8': 1, '9': 1}
     # Create a dictionary to hold the inverse of the codewords
     inverse_codewords = {}
     # Create a list of tuples representing each symbol with its occurrence count
@@ -47,9 +49,8 @@ def decode(encoded_data, symbol_occurrences):
 if __name__ == '__main__':
     # Example usage
     data = '2137211569420'
-    symbol_occurrences = {'0': 1, '1': 10, '2': 1, '3': 1, '4': 2, '5': 1, '6': 1, '7': 1, '8': 1, '9': 1}
-    encoded_data = encode(data, symbol_occurrences)
-    decoded_data = decode(encoded_data, symbol_occurrences)
+    encoded_data = tans_encode(data)
+    decoded_data = tans_decode(encoded_data)
     print(f"Data: {data}")
     print(f"Encoded data: {encoded_data}")
     print(f"Decoded data: {decoded_data}")

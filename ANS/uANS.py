@@ -1,7 +1,8 @@
 from math import ceil, floor
 import numpy as np
 
-def encode(msg, p):
+def uans_encode(msg):
+    p = 0.3
     x = 1
     for s in msg:
         if s == 0:
@@ -10,7 +11,9 @@ def encode(msg, p):
             x = floor(x/p)
     return x
 
-def decode(encoded_msg, p):
+def uans_decode(encoded_msg):
+    encoded_msg = int(encoded_msg)
+    p = 0.3
     msg = []
     while encoded_msg > 1:
         s = ceil((encoded_msg+1)*p) - ceil(encoded_msg*p)
@@ -19,13 +22,13 @@ def decode(encoded_msg, p):
             encoded_msg = encoded_msg - ceil(encoded_msg*p)
         else:
             encoded_msg = ceil(encoded_msg*p)
-    return list(reversed(msg))
+    return ''.join(map(str, reversed(msg)))
 
 if __name__ == '__main__':
     p1 = 0.3
     msg = np.ndarray.tolist(np.random.choice(np.arange(0,2), p=[1-p1, p1], size=30))
     print(msg)
-    encoded = encode(msg, p1)
+    encoded = uans_encode(msg)
     print(encoded)
-    decoded = decode(encoded, p1)
+    decoded = uans_decode(encoded)
     print(decoded)
