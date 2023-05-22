@@ -6,6 +6,28 @@
   </head>
   <body>
     <h1>Asymmetric Numeral System (ANS)</h1>
+    <div class="wrapper">
+             <input type="radio" name="select" id="option-1" checked>
+             <input type="radio" name="select" id="option-2">
+            <input type="radio" name="select" id="option-3">
+            <input type="radio" name="select" id="option-4">
+               <label for="option-1" class="option option-1">
+                 <div class="dot"></div>
+                  <span>uANS</span>
+                  </label>
+               <label for="option-2" class="option option-2">
+                 <div class="dot"></div>
+                  <span>rANS with rescaling</span>
+               </label>
+                <label for="option-3" class="option option-3">
+                 <div class="dot"></div>
+                  <span>rANS without rescaling</span>
+               </label>
+                <label for="option-4" class="option option-4">
+                 <div class="dot"></div>
+                  <span>tANS</span>
+               </label>
+    </div>
     <div class="container">
       <div class="card">
         <div class="card-header">
@@ -18,6 +40,7 @@
             </label>
             <span>Decoding</span>
           </div>
+          <button class="reset-button">Start</button>
         </div>
         <div class="card-body">
           <textarea id="input" rows="10" cols="45" placeholder="Enter a number"></textarea>
@@ -29,14 +52,14 @@
           <button class="reset-button">Reset</button>
         </div>
         <div class="card-body">
-          <textarea id="output" rows="10" cols="45" placeholder="Output"></textarea>
+          <textarea id="output" rows="10" cols="45" placeholder="Output" readonly></textarea>
         </div>
       </div>
     </div>
 
     <footer>
       <p class="footer-authors">Created by: Kacper Bojanowski, Kacper Handzlik, Mateusz Potasnik, Bartosz Szymanski</p>
-      <p class="footer-desc">Project on Coding and Cryptography titled: "ANS as applied to a network application"</p>
+      <p class="footer-desc">Project on Coding and Cryptography titled "ANS as applied to a network application"</p>
     </footer>
 
 
