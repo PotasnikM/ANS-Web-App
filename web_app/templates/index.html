@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="../static/css/style.css">
   </head>
   <body>
+    <main>
     <h1>Asymmetric Numeral System (ANS)</h1>
     <div class="wrapper">
             <input type="radio" onclick="ChangeAnsType(this)" name="select" value="uans" id="option-1" checked="checked">
@@ -57,6 +58,7 @@
       </div>
     </div>
 
+    </main>
     <footer>
       <p class="footer-authors">Created by: Kacper Bojanowski, Kacper Handzlik, Mateusz Potasnik, Bartosz Szymanski</p>
       <p class="footer-desc">Project on Coding and Cryptography titled "ANS as applied to a network application"</p>
@@ -123,6 +125,7 @@
             document.getElementById("encode").setAttribute("name", "change");
             document.getElementById("decode").removeAttribute("name");
             ChangeAnsType(document.getElementById('option-1'))
+            document.getElementById('option-1').checked = true;
         }
     </script>
   </body>
