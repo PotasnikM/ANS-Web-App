@@ -36,7 +36,7 @@
           <div class="toggle">
              <span id="encode" name="change">Encoding</span>
             <label class="switch">
-              <input type="checkbox" onclick="ChangeDecode()">
+              <input type="checkbox" onclick="ChangeDecode()" id="checkbox">
               <span class="slider round"></span>
             </label>
             <span id="decode" >Decoding</span>
@@ -126,6 +126,7 @@
             document.getElementById("decode").removeAttribute("name");
             ChangeAnsType(document.getElementById('option-1'))
             document.getElementById('option-1').checked = true;
+            document.getElementById('checkbox').checked = false;
         }
     </script>
   </body>
