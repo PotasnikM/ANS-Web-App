@@ -30,14 +30,16 @@ assert all(x == y for x, y in zip(decoded_symbols, symbols))
 
 # display results
 print(f"data source entropy    : {entropy:.5f} bits/symbol")
+print(f"tstact{t_stack}")
+print(f"s{s}")
 print("ANS with rescaling")
 print(f"average bits per symbol: {average_bps:.5f} bits/symbol")
 
 # encode
-s = ans_encoder_no_rescaling(symbols, p, c, r)
+s = ans_encoder_no_rescaling(symbols)
 
 # decode
-decoded_symbols = ans_decoder_no_rescaling(s, p, c, r)
+decoded_symbols = ans_decoder_no_rescaling(s)
 
 # statistics
 average_bps = math.log2(s) / sequence_length

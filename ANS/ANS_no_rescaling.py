@@ -1,4 +1,4 @@
-def ans_encoder_no_rescaling(symbols, p, c, r):
+def ans_encoder_no_rescaling(symbols):
     """ ANS encoder (no rescaling)
 
     Parameters
@@ -21,6 +21,9 @@ def ans_encoder_no_rescaling(symbols, p, c, r):
     s : integer representation of the encoded message
 
     """
+    p = [20, 50, 80, 106]
+    c = [0, 20, 70, 150]
+    r = 8
     s = 0
     for x in symbols:
         if s < c[1]:
@@ -29,7 +32,7 @@ def ans_encoder_no_rescaling(symbols, p, c, r):
     return s
 
 
-def ans_decoder_no_rescaling(s, p, c, r):
+def ans_decoder_no_rescaling(s):
     """ ANS encoder (no rescaling)
 
     Parameters
@@ -52,7 +55,9 @@ def ans_decoder_no_rescaling(s, p, c, r):
         list of decoded symbols
 
     """
-
+    p = [20, 50, 80, 106]
+    c = [0, 20, 70, 150]
+    r = 8
     def h(s):
         s = s % 2 ** r
         # this loop can be improved by binary search
