@@ -25,6 +25,8 @@ def ans_encoder_no_rescaling(symbols):
     c = [0, 20, 70, 150]
     r = 8
     s = 0
+    symbols = list(map(int, symbols))
+    print(symbols)
     for x in symbols:
         if s < c[1]:
             s += 1
@@ -58,8 +60,9 @@ def ans_decoder_no_rescaling(s):
     p = [20, 50, 80, 106]
     c = [0, 20, 70, 150]
     r = 8
+    s = int(s)
     def h(s):
-        s = s % 2 ** r
+        s = int(s) % 2 ** r
         # this loop can be improved by binary search
         for a in reversed(range(len(c))):
             if s >= c[a]:
@@ -73,4 +76,6 @@ def ans_decoder_no_rescaling(s):
             s % (2 ** r) - c[x]
         if s < c[1]:
             s -= 1
-    return list(reversed(decoded_symbols))
+    decoded_symbols = list(reversed(decoded_symbols))
+    decoded_symbols = ''.join(str(num) for num in decoded_symbols)
+    return decoded_symbols

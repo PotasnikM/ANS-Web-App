@@ -8,18 +8,18 @@ c = [0, 20, 70, 150]
 r = 8
 r_s = 32
 r_t = 16
-sequence_length = 10000
+sequence_length = 4
 
 # randomly sample input
 random.seed(2)
 symbols = random.choices(range(len(p)), weights=p, k=sequence_length)
-
+print(symbols)
 # statistics
 entropy = sum(-i / 2 ** r * math.log2(i / 2 ** r) for i in p)
 
 # encode
 s = ans_encoder_no_rescaling(symbols)
-
+print(s)
 # decode
 decoded_symbols = ans_decoder_no_rescaling(s)
 
