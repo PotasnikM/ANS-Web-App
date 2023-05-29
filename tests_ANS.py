@@ -1,6 +1,6 @@
 import random
 import math
-from ANS.ANS_no_rescaling import ans_decoder_no_rescaling, ans_encoder_no_rescaling
+from ANS.rANS import ans_decoder_no_rescaling, ans_encoder_no_rescaling
 
 # initialize data distribution and input length
 p = [20, 50, 80, 106]

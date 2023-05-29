@@ -1,4 +1,4 @@
-def ans_encoder_no_rescaling(symbols):
+def rans_encoder(symbols):
     """ ANS encoder (no rescaling)
 
     Parameters
@@ -34,7 +34,7 @@ def ans_encoder_no_rescaling(symbols):
     return s
 
 
-def ans_decoder_no_rescaling(s):
+def rans_decoder(s):
     """ ANS encoder (no rescaling)
 
     Parameters

@@ -1,6 +1,6 @@
 from web_app import app
 from flask import render_template, request, jsonify
-from ANS.ANS_no_rescaling import ans_decoder_no_rescaling, ans_encoder_no_rescaling
+from ANS.rANS import rans_decoder, rans_encoder
 from ANS.tANS import tans_decode, tans_encode
 from ANS.uANS import uans_decode, uans_encode
 
@@ -25,17 +25,17 @@ def uANS_decode():
     return jsonify(output=str(decoded_output))
 
 
-@app.route('/ranswos/encode', methods=["POST"])
+@app.route('/rans/encode', methods=["POST"])
 def rANSwos_encode():
     input_data = request.get_json()['input']
-    encoded_output = ans_encoder_no_rescaling(input_data)
+    encoded_output = rans_encoder(input_data)
     return jsonify(output=str(encoded_output))
 
 
-@app.route('/ranswos/decode', methods=["POST"])
+@app.route('/rans/decode', methods=["POST"])
 def rANSwos_decode():
     input_data = request.get_json()['input']
-    decoded_output = ans_decoder_no_rescaling(input_data)
+    decoded_output = rans_decoder(input_data)
     return jsonify(output=str(decoded_output))
 
 
