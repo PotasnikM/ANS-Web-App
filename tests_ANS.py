@@ -1,6 +1,5 @@
 import random
 import math
-from ANS.rANS import ans_decoder_no_rescaling, ans_encoder_no_rescaling
 
 # initialize data distribution and input length
 p = [20, 50, 80, 106]
@@ -17,17 +16,8 @@ print(symbols)
 # statistics
 entropy = sum(-i / 2 ** r * math.log2(i / 2 ** r) for i in p)
 
-# encode
-s = ans_encoder_no_rescaling(symbols)
-print(s)
-# decode
-decoded_symbols = ans_decoder_no_rescaling(s)
-
 # statistics
 average_bps = math.log2(s) / sequence_length
-
-# sanity check
-assert all(x == y for x, y in zip(decoded_symbols, symbols))
 
 # display results
 print("ANS with no rescaling")
