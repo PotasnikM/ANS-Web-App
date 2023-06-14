@@ -1,4 +1,4 @@
-from web_app import app
+from web_app import app, cache
 from flask import render_template, request, jsonify
 from ANS.rANS import rans_decoder, rans_encoder
 from ANS.tANS import tans_decode, tans_encode
@@ -42,12 +42,13 @@ def rANSwos_decode():
 @app.route('/tans/encode', methods=["POST"])
 def tANS_encode():
     input_data = request.get_json()['input']
-    encoded_output = tans_encode(input_data)
+    encoded_output, symbol_occurrences = tans_encode(input_data)
+    cache.set('symbols', symbol_occurrences)
     return jsonify(output=str(encoded_output))
 
 
 @app.route('/tans/decode', methods=["POST"])
 def tANS_decode():
     input_data = request.get_json()['input']
-    decoded_output = tans_decode(input_data)
+    decoded_output = tans_decode(input_data, cache.get('symbols'))
     return jsonify(output=str(decoded_output))

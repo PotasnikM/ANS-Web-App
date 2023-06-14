@@ -1,5 +1,10 @@
 def tans_encode(data):
-    symbol_occurrences = {'0': 1, '1': 10, '2': 1, '3': 1, '4': 2, '5': 1, '6': 1, '7': 1, '8': 1, '9': 1}
+    symbol_occurrences = {}
+    for symbol in data:
+        if symbol in symbol_occurrences:
+            symbol_occurrences[symbol] += 1
+        else:
+            symbol_occurrences[symbol] = 1
     # Create a dictionary to hold the codewords for each symbol
     codewords = {}
     # Create a list of tuples representing each symbol with its occurrence count
@@ -17,11 +22,10 @@ def tans_encode(data):
     encoded_data = ''
     for symbol in data:
         encoded_data += codewords[symbol]
-    return encoded_data
+    return encoded_data, symbol_occurrences
 
 
-def tans_decode(encoded_data):
-    symbol_occurrences = {'0': 1, '1': 10, '2': 1, '3': 1, '4': 2, '5': 1, '6': 1, '7': 1, '8': 1, '9': 1}
+def tans_decode(encoded_data, symbol_occurrences):
     # Create a dictionary to hold the inverse of the codewords
     inverse_codewords = {}
     # Create a list of tuples representing each symbol with its occurrence count

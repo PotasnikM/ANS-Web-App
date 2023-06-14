@@ -61,11 +61,14 @@
 
 
     <script>
-        // limit input to only numbers with regex
+        //limit input to only numbers with regex
         const textarea = document.getElementById('input');
         textarea.addEventListener('input', function() {
-          const regex = /[^0-9]/g; // match any non-numeric characters
-          textarea.value = textarea.value.replace(regex, ''); // remove non-numeric characters
+          const AnsType = document.querySelector("[checked='checked']").getAttribute('value');
+          if (AnsType !== 'tans') {
+            const regex = /[^0-9]/g; // match any non-numeric characters
+            textarea.value = textarea.value.replace(regex, ''); // remove non-numeric characters
+          }
         });
 
         function start() {

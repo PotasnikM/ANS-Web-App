@@ -10,7 +10,6 @@ def uans_encode(msg):
             x = ceil((x+1)/(1-p1)) - 1
         else:
             x = floor(x/p1)
-        print(x)
     return x
 
 def uans_decode(encoded_msg):
