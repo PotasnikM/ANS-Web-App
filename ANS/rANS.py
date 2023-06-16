@@ -1,4 +1,4 @@
-def rans_encoder(symbols):
+def rans_encoder(symbols, r):
     """ ANS encoder (no rescaling)
 
     Parameters
@@ -23,7 +23,7 @@ def rans_encoder(symbols):
     """
     p = [20, 50, 80, 106]
     c = [0, 20, 70, 150]
-    r = 8
+    # r = 8
     s = 0
     symbols = list(map(int, symbols))
     print(symbols)
@@ -34,7 +34,7 @@ def rans_encoder(symbols):
     return s
 
 
-def rans_decoder(s):
+def rans_decoder(s, r):
     """ ANS encoder (no rescaling)
 
     Parameters
@@ -59,7 +59,7 @@ def rans_decoder(s):
     """
     p = [20, 50, 80, 106]
     c = [0, 20, 70, 150]
-    r = 8
+    # r = 8
     s = int(s)
     def h(s):
         s = int(s) % 2 ** r

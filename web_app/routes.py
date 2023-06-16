@@ -28,14 +28,16 @@ def uANS_decode():
 @app.route('/rans/encode', methods=["POST"])
 def rANSwos_encode():
     input_data = request.get_json()['input']
-    encoded_output = rans_encoder(input_data)
+    r = int(request.get_json()['parameter'])
+    encoded_output = rans_encoder(input_data, r)
     return jsonify(output=str(encoded_output))
 
 
 @app.route('/rans/decode', methods=["POST"])
 def rANSwos_decode():
     input_data = request.get_json()['input']
-    decoded_output = rans_decoder(input_data)
+    r = int(request.get_json()['parameter'])
+    decoded_output = rans_decoder(input_data, r)
     return jsonify(output=str(decoded_output))
 
 
