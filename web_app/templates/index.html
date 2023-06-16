@@ -28,7 +28,10 @@
       <div class="card">
         <div class="card-header">
           <h2>Input</h2>
-          <div class="toggle">
+            <label> Parameter:
+                <input id="parameter">
+            </label>
+            <div class="toggle">
              <span id="encode" name="change">Encoding</span>
             <label class="switch">
               <input type="checkbox" onclick="ChangeDecode()" id="checkbox">
@@ -73,10 +76,12 @@
 
         function start() {
             const input = document.getElementById('input').value;
+            const parameter = document.getElementById('parameter').value;
             const EnOrDe = document.querySelector("[name='change']").getAttribute('id');
             const AnsType = document.querySelector("[checked='checked']").getAttribute('value');
             const data = {
-                input: input
+                input: input,
+                parameter: parameter
               };
             fetch(`/${AnsType}/${EnOrDe}`, {
                 method: 'POST',
