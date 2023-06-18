@@ -14,14 +14,16 @@ def home_page():
 @app.route('/uans/encode', methods=["POST"])
 def uANS_encode():
     input_data = request.get_json()['input']
-    encoded_output = uans_encode(input_data)
+    p1 = float(request.get_json()['parameter'])
+    encoded_output = uans_encode(input_data, p1)
     return jsonify(output=str(encoded_output))
 
 
 @app.route('/uans/decode', methods=["POST"])
 def uANS_decode():
     input_data = request.get_json()['input']
-    decoded_output = uans_decode(input_data)
+    p1 = float(request.get_json()['parameter'])
+    decoded_output = uans_decode(input_data, p1)
     return jsonify(output=str(decoded_output))
 
 
